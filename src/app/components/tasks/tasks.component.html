@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-title>
+        <h2>To Do List on Angular {{version}}</h2>
+    </mat-card-title>
+    <mat-card-content>
+        <div class="example-form">
+            <form>
+                <mat-form-field>
+                    <input matInput placeholder="Enter new task" [(ngModel)]="taskName" name="taskName">
+                </mat-form-field>
+            </form>
+            <button mat-button (click)="addNewTask()" color="primary">
+                    Add task
+            </button>
+        </div>
+
+        <div *ngFor="let task of tasks" class="list-wrapper">
+            <div class="tasks-list">
+                <p class="task-name">{{task.value}}</p>
+                <button class="remove-btn" (click)="removeTask(task.id)" id={{task.id}}>
+                    Remove task
+                </button>
+            </div>
+        </div>
+
+        <button mat-button (click)="removeAllTasks()" color="warn" [disabled]="tasks.length === 0">
+            Clear all tasks
+        </button>
+    </mat-card-content>
+</mat-card>
